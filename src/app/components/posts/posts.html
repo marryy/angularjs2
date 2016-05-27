@@ -1,0 +1,9 @@
+<div class="posts col-lg-10 col-md-9 col-sm-9 col-xs-12">
+  <ul>
+    <li *ng-for="#post of posts" class="post">
+      <label>Title: </label>{{post.title}}
+    </br>
+      <label>Content: </label>{{post.body}}
+    </li>
+  </ul>
+</div>

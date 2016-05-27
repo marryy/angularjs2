@@ -1,0 +1,7 @@
+<div class="users">{{greeting}}</br>
+  <ul>
+    <li *ng-for="#user of users">
+      <user-renderer [user]="user" (toggle)="restService.changeAge($event)"></user-renderer>
+    </li>
+  </ul>
+</div>
