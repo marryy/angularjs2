@@ -2,39 +2,44 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  module: {
-    preLoaders: [
-      {
-        test: /\.js/,/\.ts/,
-        include: path.resolve(__dirname, 'src'),
-        loader: 'eslint'
-      }
-    ],
-    loaders: [
-      {
-        test: /\.html$/,
-        include: path.resolve(__dirname, 'src'),
-        loader: 'file?name=[name].html'
-      },
-      {
-        test: /\.js$/,/\.ts$/
-        include: path.resolve(__dirname, 'src'),
-        loaders: ['react-hot', 'babel-loader']
-      },
-      {
-        test: /\.less$/,
-        include: path.resolve(__dirname, 'src'),
-        loaders: ['style', 'css', 'less']
-      },
-      {
-        test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-        include: path.resolve(__dirname, 'src'),
-        loaders: ['file-loader']
-      }
-    ]
-  },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ]
+    entry: './src/index.js',
+    output: {
+        path: './bin',
+        filename: 'src.bundle.js'
+    },
+    devServer: {
+      port: 8080,
+      historyApiFallback: true
+    },
+    module: {
+      loaders: [
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          loader: 'babel-loader',
+        },
+        {
+          test: /\.css$/,
+          exclude: /node_modules/,
+          loader: 'style!css',
+        },
+        {
+          test: /\.html$/,
+          exclude: /node_modules/,
+          loader: 'file?name=[name].html'
+        },
+        {
+          test: /\.less$/,
+          exclude: /node_modules/,
+          loaders: ['style', 'css', 'less']
+        },
+        {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+          loaders: [
+            'file?hash=sha512&digest=hex&name=[hash].[ext]',
+            'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+          ]
+        }
+      ]
+     }
 };

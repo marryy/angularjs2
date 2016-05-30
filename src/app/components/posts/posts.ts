@@ -19,4 +19,13 @@ export class Posts {
       () => console.log('Completed!')
     );
   }
+
+  // getBooksAndMovies() {
+  //   this.postsService.getBooksAndMovies().subscribe(
+  //     data => {
+  //       this.books = data[0]
+  //       this.movies = data[1]
+  //     }
+  //   );
+  // }
 }

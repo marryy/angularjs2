@@ -10,10 +10,13 @@ export class PostsService{
 
 
   constructor(private http:Http) {
+    this.posts = this.http.get(this.root + '/posts').map((response) => response.json())
 
-      this.posts = this.http.get(this.root + '/posts').map((response) => response.json())
-}
-
-
-
+  }
+  // getBooksAndMovies() {
+  //   return Observable.forkJoin(
+  //     this.http.get(this.root + '/posts').map((response) => response.json()),
+  //     this.http.get(this.root + '/comments').map((response) => response.json())
+  //   );
+  // }
 }

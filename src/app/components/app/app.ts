@@ -23,4 +23,5 @@ export class AppComponent {
 
 }
 
+
 bootstrap(AppComponent, [RestService, UsersService, PostsService, ROUTER_PROVIDERS, HTTP_PROVIDERS]);

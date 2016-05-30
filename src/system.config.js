@@ -3,7 +3,7 @@ System.config({
     'app': {defaultExtension: 'js'}
   },
   map: {
-    'rxjs': 'node_modules/@rxjs',
+    'rxjs': '/node_modules/rxjs',
   }
 });
 System.import('app/components/app/app');
